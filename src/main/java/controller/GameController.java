@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import repository.GameRepository;
+import service.game.GameService;
 
 import static controller.RestEndpoint.BASE_URL;
 
@@ -15,15 +16,14 @@ import static controller.RestEndpoint.BASE_URL;
 public class GameController {
 
     @Autowired
+    private GameService gameService;
+
     private GameRepository gameRepository;
 
     @GetMapping("{gameId}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Game> getGameById(@PathVariable(value = "gameId") Long gameId)
             throws ResourceNotFoundException {
-        Game game = gameRepository.findById(gameId).orElseThrow(
-                () -> new ResourceNotFoundException("Game not found for this id: " + gameId));
 
-        return ResponseEntity.ok().body(game);
     }
 }

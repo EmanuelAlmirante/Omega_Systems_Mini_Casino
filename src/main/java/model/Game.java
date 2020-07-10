@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "games")
@@ -53,7 +54,13 @@ public class Game {
     }
 
     public void setChanceOfWinning(double chanceOfWinning) {
-        this.chanceOfWinning = chanceOfWinning;
+        if (0 > chanceOfWinning && chanceOfWinning > 1 ) {
+            throw new IllegalArgumentException("The chance of winning must be between 0 and 1!");
+        } if (BigDecimal.valueOf(chanceOfWinning).scale() != 2) {
+            throw new IllegalArgumentException("The chance of winning must have two decimal!");
+        } else {
+            this.chanceOfWinning = chanceOfWinning;
+        }
     }
 
     public double getWinningMultiplier() {
@@ -61,7 +68,11 @@ public class Game {
     }
 
     public void setWinningMultiplier(double winningMultiplier) {
-        this.winningMultiplier = winningMultiplier;
+        if (winningMultiplier < 0) {
+            throw new IllegalArgumentException("The winning multiplier must be bigger than 0!");
+        } else {
+            this.winningMultiplier = winningMultiplier;
+        }
     }
 
     public int getMaxBet() {
@@ -69,7 +80,14 @@ public class Game {
     }
 
     public void setMaxBet(int maxBet) {
-        this.maxBet = maxBet;
+        if (maxBet < 0) {
+            throw new IllegalArgumentException("The max bet must be bigger than 0!");
+        } if (maxBet< minBet) {
+            throw new IllegalArgumentException("The max bet must be bigger than the min bet!");
+        }
+        else {
+            this.maxBet = maxBet;
+        }
     }
 
     public int getMinBet() {
@@ -77,48 +95,12 @@ public class Game {
     }
 
     public void setMinBet(int minBet) {
-        this.minBet = minBet;
-    }
-
-/*    public static class Builder {
-        private String name;
-        private double chanceOfWinning;
-        private double winningMultiplier;
-        private int maxBet;
-        private int minBet;
-
-        public static Builder gameWith() {
-            return new Builder();
-        }
-
-        public Builder withName(String name) {
-            this.name = name;
-
-            return this;
-        }
-
-        public Builder withChanceOfWinning(double chanceOfWinning) {
-            this.chanceOfWinning = chanceOfWinning;
-
-            return this;
-        }
-
-        public Builder withWinningMultiplier(double winningMultiplier) {
-            this.winningMultiplier = winningMultiplier;
-
-            return this;
-        }
-
-        public Builder withMaxBet(int maxBet) {
-            this.maxBet = maxBet;
-
-            return this;
-        }
-
-        public Builder withMinBet(int minBet) {
+        if (minBet < 0) {
+            throw new IllegalArgumentException("The min bet must be bigger than 0!");
+        } if (minBet > maxBet) {
+            throw new IllegalArgumentException("The min bet must be smaller than the max bet!");
+        } else {
             this.minBet = minBet;
-
-            return this;
         }
-    }*/
+    }
 }

@@ -1,11 +1,14 @@
 package controller;
 
 import exception.ResourceNotFoundException;
+import model.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import repository.PlayerRepository;
+
+import javax.validation.Valid;
 
 import static controller.RestEndpoint.BASE_URL;
 
@@ -16,15 +19,25 @@ public class PlayerController {
     @Autowired
     private PlayerRepository playerRepository;
 
-
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Player registerPlayer(@Valid @RequestBody Player player) {
+        return playerRepository.save(player);
+    }
 
     @GetMapping("/balance/{username}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Long> getBalanceOfPlayer(@PathVariable(value = "username") String username)
-            throws ResourceNotFoundException {
-        Long balance = playerRepository.getBalanceByUsername(username).orElseThrow(
-                () -> new ResourceNotFoundException("Player not found for this username: " + username));
+    public ResponseEntity<Double> getBalanceOfPlayer(@PathVariable(value = "username") String username) {
 
-        return ResponseEntity.ok().body(balance);
     }
+
+    @PostMapping("/{username}/deposit/{amount}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Void> makeDeposit(@PathVariable(value = "username") String username,
+                                            @PathVariable(value = "amount") double amount) {
+
+
+    }
+
+
 }

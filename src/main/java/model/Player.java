@@ -1,6 +1,12 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.util.Calendar;
 import java.util.Date;
 
 @Entity
@@ -20,17 +26,17 @@ public class Player {
     @Temporal(TemporalType.DATE)
     private Date birthDate;
 
-    private double balance;
+    @JsonIgnore
+    private double balance = 0;
 
     public Player() {
     }
 
-    public Player(long id, String name, String username, Date birthDate, double balance) {
+    public Player(long id, String name, String username, Date birthDate) {
         this.id = id;
         this.name = name;
         this.username = username;
         this.birthDate = birthDate;
-        this.balance = balance;
     }
 
     public long getId() {
@@ -62,7 +68,14 @@ public class Player {
     }
 
     public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+        LocalDate today = LocalDate.now();
+        LocalDate birthday = birthDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        if (Period.between(birthday, today).getYears() < 18) {
+            throw new IllegalArgumentException("Player must be older than 18!");
+        } else {
+            this.birthDate = birthDate;
+        }
     }
 
     public double getBalance() {
