@@ -34,6 +34,10 @@ Below are documented the endpoints of the API of this project. There are also so
    
       http://localhost:8080/casino/api/bets
       
+   Response Status:
+   
+      200 OK
+      
    Body:
    
       {
@@ -60,6 +64,10 @@ Below are documented the endpoints of the API of this project. There are also so
 	    
       http://localhost:8080/casino/api/games/1
       
+    Response Status:
+    
+      200 OK
+      
     Body:
     
       empty
@@ -82,6 +90,10 @@ Below are documented the endpoints of the API of this project. There are also so
     URL:
     
       http://localhost:8080/casino/api/players
+      
+    Response Status:
+    
+      201 CREATED
       
     Body:
     
@@ -107,6 +119,10 @@ Below are documented the endpoints of the API of this project. There are also so
     
       http://localhost:8080/casino/api/players/John_Omega
       
+    Response Status:
+    
+      200 OK
+      
     Body:
     
       empty
@@ -127,6 +143,10 @@ Below are documented the endpoints of the API of this project. There are also so
       
       http://localhost:8080/casino/api/players/balance/John_Omega
       
+    Response Status:
+    
+      200 OK
+      
     Body:
     
       empty
@@ -140,6 +160,10 @@ Below are documented the endpoints of the API of this project. There are also so
     URL:
     
       http://localhost:8080/casino/api/players/abc/deposit/1000.15
+      
+    Response Status:
+    
+      200 OK
       
     Body:
     
