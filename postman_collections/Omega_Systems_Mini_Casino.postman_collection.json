@@ -1,0 +1,170 @@
+{
+	"info": {
+		"_postman_id": "b5f0167f-652f-46db-a5d3-ce3f52fa362b",
+		"name": "Omega_Systems_Mini_Casino",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/casino/api/players",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"abc\",\n    \"username\": \"abc\",\n    \"birthdate\": \"2002-07-11\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/casino/api/players",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"casino",
+						"api",
+						"players"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/casino/api/players/balance/abc",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/casino/api/players/balance/abc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"casino",
+						"api",
+						"players",
+						"balance",
+						"abc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/casino/api/players/abc",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/casino/api/players/abc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"casino",
+						"api",
+						"players",
+						"abc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/casino/api/players/abc/deposit/1000.15",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/casino/api/players/abc/deposit/1000.15",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"casino",
+						"api",
+						"players",
+						"abc",
+						"deposit",
+						"1000.15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/casino/api/games/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/casino/api/games/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"casino",
+						"api",
+						"games",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/casino/api/bets",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"gameId\": 1,\n    \"username\": \"abc\",\n    \"betValue\": 15\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/casino/api/bets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"casino",
+						"api",
+						"bets"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
