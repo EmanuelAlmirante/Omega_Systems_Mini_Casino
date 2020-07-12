@@ -2,6 +2,14 @@
 
 The objective of this exercise is to implement a simplified version of an API that will serve a casino.
 
+### Notes:
+
+In the _DataLoader_ class is created one game when the application is started. That is the game used when interacting with the API. To create more games it is only necessary to instantiate them in that class. 
+
+It was used an in-memory database, more precisely the _H2 Database_. By using an in-memory database all data is only persisted while the application is running and after stopping the application all data will be lost.
+
+To manually test the API please import the file in the postman_collections to Postman and use those endpoints.
+
 ### Setup:
 
 - Clone project to a folder
@@ -13,14 +21,6 @@ The objective of this exercise is to implement a simplified version of an API th
   - _mvn -Dtest=TestClass test_ -> run a single test class
   - _mvn -Dtest=TestClass1,TestClass2 test_ -> run multiple test classes
 - Package the application with _mvn package_
-
-### Notes:
-
-In the _DataLoader_ class is created one game when the application is started. That is the game used when interacting with the API. To create more games it is only necessary to instantiate them in that class. 
-
-It was used an in-memory database, more precisely the _H2 Database_. By using an in-memory database all data is only persisted while the application is running and after stopping the application all data will be lost.
-
-To manually test the API please import the file in the postman_collections to Postman and use those endpoints.
 
 ## Endpoints:
 
