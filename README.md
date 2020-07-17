@@ -8,7 +8,7 @@ In the _DataLoader_ class is created one game when the application is started. T
 
 It was used an in-memory database, more precisely the _H2 Database_. By using an in-memory database all data is only persisted while the application is running and after stopping the application all data will be lost.
 
-To manually test the API please import the file in the postman_collections to Postman and use those endpoints.
+To manually test the API please import the file in the _postman_collections_ to Postman and use those endpoints.
 
 ### Setup:
 
